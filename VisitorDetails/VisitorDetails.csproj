@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>00433c15-aea8-41a7-8c39-18731bb1dbc0</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200814151317_AdjustedFieldOptionality.cs" />
+    <Compile Remove="Migrations\20200814151317_AdjustedFieldOptionality.Designer.cs" />
+    <Compile Remove="Migrations\20200814151633_AdjustedFieldOptionality.cs" />
+    <Compile Remove="Migrations\20200814151633_AdjustedFieldOptionality.Designer.cs" />
+    <Compile Remove="Migrations\20200814151927_AdjustedFieldOptionality2.cs" />
+    <Compile Remove="Migrations\20200814151927_AdjustedFieldOptionality2.Designer.cs" />
+    <Compile Remove="Migrations\20200818234057_AddPurposeOfVisitAndMobileOptOut.cs" />
+    <Compile Remove="Migrations\20200818234057_AddPurposeOfVisitAndMobileOptOut.Designer.cs" />
+    <Compile Remove="Migrations\20200818234356_AddPurposeOfVisitAndMobileOptOut.cs" />
+    <Compile Remove="Migrations\20200818234356_AddPurposeOfVisitAndMobileOptOut.Designer.cs" />
+    <Compile Remove="Migrations\20200819000502_InitialVersion2.cs" />
+    <Compile Remove="Migrations\20200819000502_InitialVersion2.Designer.cs" />
+    <Compile Remove="Migrations\20200819001005_InitialVersion2.cs" />
+    <Compile Remove="Migrations\20200819001005_InitialVersion2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\stylerfs.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="UoN.ExpressiveAnnotations.NetCore" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SharedFunctions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+  </ItemGroup>
+
+</Project>

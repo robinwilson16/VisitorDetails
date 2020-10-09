@@ -1,0 +1,198 @@
+﻿@page "{site?}"
+@model VisitorDetails.Pages.Visitors.EnterModel
+
+@{
+    ViewData["Title"] = "Entering Site";
+}
+
+<div class="container Spacer">
+    <div class="row">
+        <div class="col-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Track and Trace</h4>
+                            <p>Please record your details below so we can follow government guidelines to keep everyone safe</p>
+                            <hr>
+                            <p class="mb-0">These details will only be used for the Track and Trace initiative and to monitor numbers on site at any one time and will not be used for any marketing. If you opt out of providing your mobile this means we will be unable to contact you in case of a COVID-19 outbreak.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (@Model.FormSubmitted != true)
+            {
+                if (Model.Visitor.SiteCode == null)
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Determine Site</h4>
+                                    <p>
+                                        Sorry it was not possible to determine which site you are visiting
+                                    </p>
+                                    <p>
+                                        Please re-scan the QR code in the entrance to check in.
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        Error: NSP
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.SiteIsValid == false)
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Determine Site</h4>
+                                    <p>
+                                        Sorry it was not possible to determine which site you are visiting
+                                    </p>
+                                    <p>
+                                        Please re-scan the QR code in the entrance to check in.
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        Error: SNV
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="container">
+                        <form method="post" id="VisitorForm">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group row">
+                                <label asp-for="Visitor.Forename" class="col-md-4 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <input asp-for="Visitor.Forename" class="form-control" />
+                                    <span asp-validation-for="Visitor.Forename" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Visitor.Surname" class="col-md-4 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <input asp-for="Visitor.Surname" class="form-control" />
+                                    <span asp-validation-for="Visitor.Surname" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Visitor.MobileTel" class="col-md-4 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <input asp-for="Visitor.MobileTel" class="form-control" />
+                                            <span asp-validation-for="Visitor.MobileTel" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-5 text-right">
+                                            Opt Out?
+                                            <label class="switch-sm">
+                                                <input asp-for="Visitor.MobileOptOut" />
+                                                <span class="slider-sm round"></span>
+                                                <span asp-validation-for="Visitor.MobileOptOut" class="text-danger"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Visitor.NumberOfGuests" class="col-md-4 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <input asp-for="Visitor.NumberOfGuests" class="form-control" />
+                                    <span asp-validation-for="Visitor.NumberOfGuests" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Visitor.PurposeOfVisitID" class="col-md-4 col-form-label"></label>
+                                <div class="col-md-8">
+                                    <select asp-for="Visitor.PurposeOfVisitID" class="form-control BarclaysExclude" asp-items="Model.PurposeOfVisit">
+                                        <option value="" selected disabled>Please Select...</option>
+                                    </select>
+                                    <span asp-validation-for="Visitor.PurposeOfVisitID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md d-md-block d-sm-none">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary btn-block SubmitVisitor"><i class="fas fa-paper-plane"></i> Submit Your Details</button>
+                                </div>
+                                <div class="col-md d-md-block d-sm-none">
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                }
+            }
+            else
+            {
+                if (Model.FormSaved == true)
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-success text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-info-circle"></i> Thanks, you have now checked in</h4>
+                                    <p>
+                                        You may now close this window.
+                                    </p>
+                                    <a class="btn btn-success" href="https://www.wlc.ac.uk"><i class="fas fa-external-link-alt"></i> Go to the WLC Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        scanOK();
+                    </script>
+                }
+                else
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Save Details</h4>
+                                    <p>
+                                        Sorry it was not possible to save your details.
+                                    </p>
+                                    <p>
+                                        Please re-scan the QR code in the entrance to check in.
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        Error: CNS
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        @*@Model.FormErrors*@
+                                        @Html.ValidationSummary()
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        scanError();
+                    </script>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,21 @@
+﻿body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+nav .NavLogo {
+    margin-top: -10px;
+    margin-bottom: -10px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.Spacer {
+    margin-top: 20px;
+}
+
+footer {
+    font-size: calc(0.6rem + 0.6vw);
+    padding: 4px;
+}

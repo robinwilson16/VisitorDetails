@@ -1,0 +1,84 @@
+﻿@page
+@model VisitorDetails.Pages.Visitors.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].SiteCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].Forename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].MobileTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].NumberOfGuests)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].LeaveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].IPAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitor[0].UserAgent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Visitor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfGuests)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAgent)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.VisitorID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.VisitorID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.VisitorID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

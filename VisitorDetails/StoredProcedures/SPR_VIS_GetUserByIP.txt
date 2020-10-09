@@ -1,0 +1,48 @@
+CREATE PROCEDURE SPR_VIS_GetUserByIP
+	@IPAddress VARCHAR(45),
+	@UserAgent VARCHAR(500),
+	@Site VARCHAR(42)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	--DECLARE @IPAddress VARCHAR(45) = '::1'
+	--DECLARE @UserAgent VARCHAR(500) = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36 Edg/86.0.622.38'
+	--DECLARE @Site VARCHAR(42) = '7CF184F4C67AD58283ECB19349720B0CAE756829'
+
+	SELECT
+		CONVERT ( NVARCHAR(42), HASHBYTES ( 'SHA1', CAST ( VIS.SiteCode AS VARCHAR(20) ) ), 2 ),
+		VIS.VisitorID,
+		VIS.SiteCode,
+		VIS.Surname,
+		VIS.Forename,
+		VIS.MobileTel,
+		VIS.MobileOptOut,
+		VIS.NumberOfGuests,
+		VIS.PurposeOfVisitID,
+		VIS.CreatedDate,
+		VIS.LeaveDate,
+		VIS.IPAddress,
+		VIS.UserAgent,
+		VIS.SiteCode1
+	FROM WLC.dbo.VIS_Visitor VIS
+	INNER JOIN (
+		SELECT
+			NumUsers = COUNT ( VIS.VisitorID )
+		FROM WLC.dbo.VIS_Visitor VIS
+		WHERE
+			VIS.IPAddress = @IPAddress
+			AND VIS.UserAgent = @UserAgent
+			AND CONVERT ( NVARCHAR(42), HASHBYTES ( 'SHA1', CAST ( VIS.SiteCode AS VARCHAR(20) ) ), 2 ) = @Site
+			AND CAST ( VIS.CreatedDate AS DATE ) = CAST ( GETDATE() AS DATE )
+			AND VIS.LeaveDate IS NULL
+	) NUM
+		ON 1 = 1
+	WHERE
+		VIS.IPAddress = @IPAddress
+		AND VIS.UserAgent = @UserAgent
+		AND CONVERT ( NVARCHAR(42), HASHBYTES ( 'SHA1', CAST ( VIS.SiteCode AS VARCHAR(20) ) ), 2 ) = @Site
+		AND CAST ( VIS.CreatedDate AS DATE ) = CAST ( GETDATE() AS DATE )
+		AND VIS.LeaveDate IS NULL
+		AND NUM.NumUsers = 1 --Only allow this method if one match was found
+END

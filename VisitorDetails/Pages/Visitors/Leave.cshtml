@@ -1,0 +1,133 @@
+﻿@page "{site?}"
+@model VisitorDetails.Pages.Visitors.LeaveModel
+
+@{
+    ViewData["Title"] = "Leaving Site";
+}
+
+<div class="container Spacer">
+    <div class="row">
+        <div class="col-md">
+            @if (Model.UserIDNotNull == false)
+            {
+                <div class="container Spacer">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> No Record Found</h4>
+                                <p>
+                                    Sorry it was not possible to check you out as you do not appear to have checked in
+                                </p>
+                                <p>
+                                    Alternatively you may have already checked out
+                                </p>
+                                <p class="text-right text-muted">
+                                    Error: NCF
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    scanError();
+                </script>
+            }
+            else if (Model.UserIDValid == false)
+            {
+                <div class="container Spacer">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> No Record Found</h4>
+                                <p>
+                                    Sorry it was not possible to check you out as you do not appear to have checked in
+                                </p>
+                                <p>
+                                    Alternatively you may have already checked out
+                                </p>
+                                <p class="text-right text-muted">
+                                    Error: UNV
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    scanError();
+                </script>
+            }
+            else if (Model.Visitor.SiteCode == null)
+            {
+                <div class="container Spacer">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Determine Site</h4>
+                                <p>
+                                    Sorry it was not possible to determine which site you are visiting
+                                </p>
+                                <p>
+                                    Please re-scan the QR code in the exit to check out.
+                                </p>
+                                <p class="text-right text-muted">
+                                    Error: NSP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    scanError();
+                </script>
+            }
+            else if (Model.SiteIsValid == false)
+            {
+                <div class="container Spacer">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Determine Site</h4>
+                                <p>
+                                    Sorry it was not possible to determine which site you are visiting
+                                </p>
+                                <p>
+                                    Please re-scan the QR code in the exit to check out.
+                                </p>
+                                <p class="text-right text-muted">
+                                    Error: SNV
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    scanError();
+                </script>
+            }
+            else
+            {
+                <div class="container Spacer">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-success text-center" role="alert">
+                                <h4 class="alert-heading"><i class="fas fa-info-circle"></i> Thanks, you have checked out</h4>
+                                <p>
+                                    You may now close this window.
+                                </p>
+                                <a class="btn btn-success" href="https://www.wlc.ac.uk"><i class="fas fa-external-link-alt"></i> Go to the WLC Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    scanOK();
+                </script>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

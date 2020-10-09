@@ -1,0 +1,18 @@
+CREATE PROCEDURE [dbo].[SPR_VIS_SiteDetails]
+	@Site VARCHAR(42)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	--DECLARE @Site VARCHAR(42) = '7CF184F4C67AD58283ECB19349720B0CAE756829'
+
+	SELECT
+		SiteCode = STE.Code,
+		SiteName = STE.Description,
+		SiteEncryptedCode = CONVERT ( NVARCHAR(42), HASHBYTES ( 'SHA1', STE.Code ), 2 )
+	FROM Site STE
+	WHERE
+		STE.Enabled = 1
+		AND STE.MayHoldEvents = 1
+		AND CONVERT ( NVARCHAR(42), HASHBYTES ( 'SHA1', STE.Code ), 2 ) = @Site
+END
