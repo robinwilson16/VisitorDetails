@@ -1,31 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v3.1\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj": {}
+    "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v5.0\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj": {}
   },
   "projects": {
-    "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v3.1\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj": {
+    "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v5.0\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v3.1\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj",
+        "projectUniqueName": "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v5.0\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj",
         "projectName": "VisitorDetails",
-        "projectPath": "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v3.1\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj",
+        "projectPath": "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v5.0\\VisitorDetails\\VisitorDetails\\VisitorDetails.csproj",
         "packagesPath": "C:\\Users\\r.wilson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v3.1\\VisitorDetails\\VisitorDetails\\obj\\",
+        "outputPath": "C:\\Users\\r.wilson\\OneDrive - Robin Digital\\Documents\\FEA\\West London College\\Net Core\\v5.0\\VisitorDetails\\VisitorDetails\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\r.wilson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -36,29 +37,38 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.6, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[5.0.1, )"
             },
             "UoN.ExpressiveAnnotations.NetCore": {
               "target": "Package",
@@ -83,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

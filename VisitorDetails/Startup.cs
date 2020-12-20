@@ -39,7 +39,7 @@ namespace VisitorDetails
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddDatabaseDeveloperPageExceptionFilter();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddRazorPages();
@@ -57,6 +57,7 @@ namespace VisitorDetails
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
